@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Game</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for game in games_list %}
+
+      <tr>
+        <td><a href="{{game.get_absolute_url}}">{{game.team1.short_name}} - {{game.team2.short_name}}</a></td>
+    {% if game.is_played %}
+        <td>{{game.score1}} - {{game.score2}}</td>
+    {% else %}
+        <td></td>
+    {% endif %}
+        <td>{{game.date_start}}</td>
+      </tr>
+
+{% endfor %}
+
+    </tbody>
+ </table>
+
+
+{% endblock content %}

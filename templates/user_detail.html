@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Game</th>
+        <th>Input_Score</th>
+        <th>Real_Score</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for prono in pronos %}
+
+      <tr>
+        <td><a href="{{prono.game.get_absolute_url}}">{{prono.game.team1.short_name}} - {{prono.game.team2.short_name}}</a></td>
+        <td>{{prono.score1}} - {{prono.score2}}</td>
+    {% if prono.game.score1 == Null %}
+        <td></td>
+    {% else %}
+        <td>{{prono.game.score1}} - {{prono.game.score2}}</td>
+    {% endif %}
+        <td></td>
+      </tr>
+
+	{% endfor %}
+
+    </tbody>
+ </table>
+
+{% endblock content %}

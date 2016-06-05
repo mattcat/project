@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<a href='{% url "games" %}'>{{instance.team1.name}} - {{instance.team2.name}}</a> : {{instance.score1}} - {{instance.score2}} </br></br>
+
+{% for prono in pronos %}
+<a href='{% url "user_detail" id=prono.user.id %}'>{{prono.user.username}}</a> : {{prono.score1}} | {{prono.score2}} </br>
+{% endfor %}
+
+{% endblock content %}

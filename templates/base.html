@@ -1,0 +1,91 @@
+<!--DOCTYPE html -->
+<html>
+<head>
+<title>{{title}}</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+
+<body>
+	
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href='{% url "users" %}'>Home</a></li>
+			<li><a href='{% url "games" %}'>Games</a></li>
+			<li><a href='{% url "teams" %}'>Teams</a></li> 
+			<li><a href='{% url "input" %}'>Input</a></li> 
+
+			{% if not request.user.is_authenticated %}
+			<li class="pull-right"><a href='{% url "login" %}'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<li class="pull-right"><a href='{% url "register" %}'><span class="glyphicon glyphicon-user"></span> Register</a></li>
+			{% else %}
+			<li class="pull-right"><a href='{% url "logout" %}'><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+			<li class="pull-right">Welcome, {{request.user.username}}</li>
+			{% endif %}
+		</ol>
+
+
+		<div class="container col-sm-8 col-sm-offset-2">
+
+
+		
+
+	{% block content %}
+	{% endblock content %}
+
+
+
+		</div>
+
+	</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+	{% if not request.user.is_authenticated %}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='{% url "login" %}'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='{% url "register" %}'><span class="glyphicon glyphicon-user"></span> Register</a></li>
+      </ul>
+    {% else %}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='{% url "logout" %}'><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">Welcome, {{request.user.username}}</a></li>
+      </ul>
+      {% endif %}
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

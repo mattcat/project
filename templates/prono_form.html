@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="containter">
+<form method='POST' action=''> {% csrf_token %}
+{{form|crispy}}
+
+<!-- {% if form.errors %}
+  {% for key, values in form.errors.itervalues %}
+  	<p>{{key}}:{{value.as_text}}</p>
+  {% endfor %}
+{% endif %} -->
+
+
+<!-- {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %} -->
+
+<input type='submit' value='Enter input' class="btn btn-primary"/>
+</form>
+
+
+
+
+<!-- <form method='POST' action=''> {% csrf_token %} -->
+<!-- {{form.as_p}} -->
+
+<!-- {% for obj in games %} -->
+<!-- <div class="form-group">
+<label for="{{obj.id}}_score1" class='col-sm-1 control-label'>{{obj.team1.short_name}}</label>
+<div class="col-sm-2">
+<input class="form-control" id="{{obj.id}}_score1" name="score1_{{obj.id}}" value="0" />
+</div>
+<div class="col-sm-2">
+<input class="form-control" id="{{obj.id}}_score2" name="score2_{{obj.id}}" value="0"/>
+</div>
+<label for="{{obj.id}}__score2" class="control-label">{{obj.team2.short_name}}</label>
+</div>
+ -->
+
+<!-- {% endfor %} -->
+
+<!-- <input type='submit' value='Enter input' class="btn btn-primary"/>
+</form> -->
+</div>
+
+
+
+{% endblock content %}
